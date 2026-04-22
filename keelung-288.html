@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>288 基隆日常：一張月票，走完這座城｜基隆海嗨</title>
+    
+    <!-- Google Fonts: Noto Sans TC & Noto Serif TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        theme: {
+                            dark: '#2d3748',      /* 深灰 - 主要文字 */
+                            primary: '#4a4a4a',   /* 海嗨灰 - 品牌主色 */
+                            secondary: '#718096', /* 淺灰 - 次要文字 */
+                            light: '#f8fafc',     /* 頁面背景 */
+                            accent: '#0e9deb',    /* 海嗨藍 - 強調色 */
+                            tpass: {
+                                green: '#8fc964',
+                                orange: '#ff9800',
+                                pink: '#df357d'
+                            }
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', 'serif'],
+                    },
+                    boxShadow: {
+                        'editorial': '0 4px 20px -2px rgba(0,0,0,0.05)',
+                        'image': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { scroll-behavior: smooth; background-color: #fafafa; }
+        
+        /* 閱讀進度條 - 海嗨藍 */
+        .progress-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: transparent; z-index: 1000;
+        }
+        .progress-bar {
+            height: 4px; background: #0e9deb; width: 0%;
+        }
+
+        /* 視差滾動背景 */
+        .bg-parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* 文字螢光筆強調 */
+        .data-highlight {
+            background: linear-gradient(120deg, transparent 0%, transparent 60%, rgba(14, 157, 235, 0.2) 60%, rgba(14, 157, 235, 0.2) 100%);
+            display: inline;
+            padding: 0 2px;
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        /* 雜誌風首字放大 */
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            padding-top: 0.2rem;
+            padding-right: 0.5rem;
+            color: #0e9deb;
+            font-family: "Noto Serif TC", serif;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body class="text-theme-dark font-sans leading-relaxed antialiased selection:bg-theme-accent selection:text-white">
+
+    <!-- 閱讀進度條 -->
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <!-- 頂部導航 (整合海嗨 Logo) -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 h-16 flex items-center px-4 md:px-8 transition-transform duration-300 transform translate-y-0 border-b border-gray-100" id="navbar">
+        <div class="max-w-6xl w-full mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center h-full py-2">
+                <!-- 使用您上傳的橫式 Logo -->
+                <img src="基隆海嗨_LOGO_橫式版_400x145.png" alt="基隆海嗨" class="h-10 object-contain">
+                <span class="ml-3 pl-3 border-l border-gray-300 text-xs font-bold text-gray-500 tracking-widest hidden sm:block pt-1">深度專題報導</span>
+            </a>
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-theme-primary">
+                <a href="#section-1" class="hover:text-theme-accent transition">通勤試算</a>
+                <a href="#section-2" class="hover:text-theme-accent transition">數據洞察</a>
+                <a href="#section-3" class="hover:text-theme-accent transition">轉乘評估</a>
+                <a href="#section-4" class="hover:text-theme-accent transition">實用攻略</a>
+            </div>
+            <button class="md:hidden text-theme-primary"><i class="fas fa-bars text-xl"></i></button>
+        </div>
+    </nav>
+
+    <!-- 英雄區塊 (Hero) - 使用公車與馬路的實境照片增加震撼感 -->
+    <header class="relative w-full h-[85vh] flex flex-col justify-center px-6 md:px-12 bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?q=80&w=2072&auto=format&fit=crop');">
+        <!-- 漸層遮罩：整體壓上一層透明灰，底部加深受光度對比，營造大片感 -->
+        <div class="absolute inset-0 bg-gray-500/20 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-800/80 to-gray-600/30"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto w-full text-white pt-16">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium px-4 py-1.5 text-xs tracking-widest mb-6 rounded-full shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-theme-accent"></span> 公共運輸滿三週年
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight drop-shadow-lg font-serif">
+                288 基隆日常 <br>
+                <span class="text-3xl md:text-5xl font-light opacity-90 mt-2 block tracking-wide">一張月票，走完這座城</span>
+            </h1>
+            <p class="text-lg md:text-xl font-light text-gray-300 mt-6 border-l-2 border-theme-accent pl-5 max-w-xl leading-relaxed">
+                上路滿三年，36 萬基隆人的通勤算式<br>從這裡重新開始。
+            </p>
+        </div>
+        <!-- 往下滾動提示 -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 animate-bounce flex flex-col items-center">
+            <span class="text-[10px] tracking-[0.2em] mb-2 uppercase">Scroll to read</span>
+            <i class="fas fa-arrow-down text-sm"></i>
+        </div>
+    </header>
+
+    <!-- 內容主體 -->
+    <main class="max-w-3xl mx-auto px-6 py-16 md:py-24 relative z-20">
+        
+        <!-- 導言 (Editor's Note) -->
+        <section class="mb-20 text-lg leading-loose text-theme-dark">
+            <p class="drop-cap mb-6">
+                基隆 288 定期票於 112 年 10 月 16 日啟用，到 115 年已經上路滿三年。每月 <strong class="text-theme-accent font-bold text-xl">288</strong> 元，基隆市公車處 57 條路線、臺鐵基隆到暖暖 6 站，搭幾次都免費。三年來，有人每天用、有人還沒開始用，還有人買了卡但下車忘了刷。
+            </p>
+            <p class="font-medium text-xl text-gray-800 border-l-4 border-theme-accent pl-5 my-8 py-2 bg-gray-50/50">
+                這個專題，想從三件事重新聊聊 288：能省多少、為什麼上下車都要刷、以及從機車改搭公車到底值不值。
+            </p>
+        </section>
+
+        <!-- 壹、算帳 -->
+        <section id="section-1" class="mb-24 scroll-mt-24">
+            <div class="flex items-center mb-10 border-b border-gray-200 pb-4">
+                <span class="text-4xl font-serif font-black text-gray-200 mr-4">01</span>
+                <h2 class="text-3xl font-bold text-theme-primary tracking-wide">一張 288，到底能搭多少？</h2>
+            </div>
+            
+            <p class="text-lg text-theme-secondary mb-10">
+                基隆通勤族每個月花多少錢？以台鐵基隆到七堵、公車接駁回家這條路線為例，一天來回 60 元、一個月 22 天就是 1,320 元。改買 288，同樣的路線<span class="data-highlight">省下 1,032 元，折合 21 折</span>。
+            </p>
+
+            <!-- 成熟版資訊圖表表格 (保留七欄與配色邏輯，但降低彩度提升質感) -->
+            <div class="overflow-x-auto bg-white rounded border border-gray-200 shadow-editorial mb-8 p-1">
+                <table class="w-full text-center border-collapse text-sm" style="min-width: 700px;">
+                    <thead>
+                        <tr class="text-gray-600 border-b-2 border-gray-800">
+                            <th class="p-4 font-bold text-left">搭乘方式</th>
+                            <th class="p-4 font-bold">天數</th>
+                            <th class="p-4 font-bold text-gray-500">單趟(日)</th>
+                            <th class="p-4 font-bold text-gray-500">來回(日)</th>
+                            <th class="p-4 font-bold text-gray-500">來回(月)</th>
+                            <th class="p-4 font-bold text-theme-accent">現省</th>
+                            <th class="p-4 font-bold text-red-500">現折</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <!-- Row 1 -->
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+                            <td class="p-4 text-left font-medium">台鐵 <i class="fas fa-exchange-alt text-[10px] mx-1 text-gray-400"></i> 公車</td>
+                            <td rowspan="4" class="p-4 font-bold text-gray-400 border-l border-r border-gray-100">22天</td>
+                            <td class="p-4">15元</td>
+                            <td class="p-4">60元</td>
+                            <td class="p-4 font-bold">1,320元</td>
+                            <td class="p-4 font-bold text-theme-accent">1,032元</td>
+                            <td class="p-4 font-bold text-red-500">21折</td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+                            <td class="p-4 text-left font-medium">台鐵 / 一般票券</td>
+                            <td class="p-4">15元</td>
+                            <td class="p-4">30元</td>
+                            <td class="p-4 font-bold">660元</td>
+                            <td class="p-4 font-bold text-theme-accent">372元</td>
+                            <td class="p-4 font-bold text-red-500">43折</td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+                            <td class="p-4 text-left font-medium">公車 / 一般票券</td>
+                            <td class="p-4">15元</td>
+                            <td class="p-4">30元</td>
+                            <td class="p-4 font-bold">660元</td>
+                            <td class="p-4 font-bold text-theme-accent">372元</td>
+                            <td class="p-4 font-bold text-red-500">43折</td>
+                        </tr>
+                        <!-- Row 4 -->
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+                            <td class="p-4 text-left font-medium text-gray-500">公車 / 學生票券</td>
+                            <td class="p-4 text-gray-500">9元</td>
+                            <td class="p-4 text-gray-500">18元</td>
+                            <td class="p-4 font-bold text-gray-500">396元</td>
+                            <td class="p-4 font-bold text-theme-accent/70">108元</td>
+                            <td class="p-4 font-bold text-red-400">72折</td>
+                        </tr>
+                        <!-- Row 5 (TPASS) - 加強框線與背景凸顯 -->
+                        <tr class="bg-gray-50/80 border-t-2 border-theme-primary relative">
+                            <td class="p-5 text-left font-bold text-theme-primary">
+                                基隆市專屬<br><span class="text-xs text-theme-accent">TPASS 月票</span>
+                            </td>
+                            <td class="p-5 font-bold text-theme-primary border-l border-r border-gray-200">30天</td>
+                            <td colspan="3" class="p-5 font-medium tracking-widest text-gray-500 text-sm">無限次數免費搭乘</td>
+                            <td class="p-5 font-black text-theme-accent text-xl">288元</td>
+                            <td class="p-5 font-bold relative w-[80px]">
+                                <!-- 優雅版「勝」 Badge -->
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="inline-flex items-center justify-center bg-red-600 text-white w-10 h-10 rounded-sm font-black text-lg transform -rotate-6 shadow-sm border border-red-700">勝</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-sm text-gray-500 text-center flex justify-center items-center gap-2">
+                <i class="fas fa-info-circle"></i> 每月搭超過 20 趟公車或台鐵，288 就回本。多搭就是多賺。
+            </p>
+        </section>
+
+        <!-- 貳、數據 -->
+        <section id="section-2" class="mb-24 scroll-mt-24">
+            <div class="flex items-center mb-10 border-b border-gray-200 pb-4">
+                <span class="text-4xl font-serif font-black text-gray-200 mr-4">02</span>
+                <h2 class="text-3xl font-bold text-theme-primary tracking-wide">刷卡兩下，市府就多看見你一次</h2>
+            </div>
+            
+            <p class="text-lg text-theme-secondary mb-10 leading-relaxed">
+                基隆市公共運輸目前上下車刷卡率大約 6 到 7 成。每一次沒有刷到的下車，都是市府後台一筆空白的旅次紀錄。
+            </p>
+
+            <!-- 數據視覺化 (雜誌風純淨排版) -->
+            <div class="grid grid-cols-3 gap-4 mb-10 border-y border-gray-200 py-8">
+                <div class="text-center px-4 border-r border-gray-200">
+                    <p class="text-xs text-gray-500 font-bold mb-2 tracking-widest">目前刷卡率</p>
+                    <p class="text-4xl font-light text-theme-dark font-serif">65<span class="text-lg font-sans text-gray-400 ml-1">%</span></p>
+                </div>
+                <div class="text-center px-4 border-r border-gray-200">
+                    <p class="text-xs text-gray-500 font-bold mb-2 tracking-widest">資料空值</p>
+                    <p class="text-4xl font-light text-red-500 font-serif">35<span class="text-lg font-sans text-red-300 ml-1">%</span></p>
+                </div>
+                <div class="text-center px-4">
+                    <p class="text-xs text-gray-500 font-bold mb-2 tracking-widest">理想目標</p>
+                    <p class="text-4xl font-light text-theme-accent font-serif">90<span class="text-lg font-sans text-theme-accent/60 ml-1">%</span></p>
+                </div>
+            </div>
+
+            <div class="text-lg text-theme-secondary leading-loose">
+                <p class="mb-6">
+                    刷卡這件事，用了之後市府才知道：哪條路線尖峰時段最擠、哪條離峰時段空車最多、哪一站等車等最久。基隆市公車處的班次調度、站點新增、路線優化，都依賴這些資料做判斷。
+                </p>
+                <div class="bg-gray-50 p-6 rounded text-center my-8 shadow-editorial">
+                    <i class="fas fa-bus text-3xl text-gray-300 mb-4"></i>
+                    <p class="font-bold text-lg text-theme-primary">
+                        「只要你每次都刷卡，你就是讓基隆公共運輸變好的那個人。」
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main> <!-- 暫時中斷 main 以插入滿版圖片 -->
+
+    <!-- 視差間隔圖 - 真實攝影 -->
+    <div class="w-full h-[50vh] relative">
+        <div class="absolute inset-0 bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1541888069542-6e21606dfeb8?q=80&w=2070&auto=format&fit=crop');"></div>
+        <div class="absolute inset-0 bg-gray-900/60"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+            <h3 class="text-white text-2xl md:text-4xl font-serif font-light tracking-widest text-center px-6 leading-relaxed">
+                "從機車把手，<br class="md:hidden">到公車扶手"
+            </h3>
+        </div>
+    </div>
+
+    <!-- 繼續內容主體 -->
+    <main class="max-w-4xl mx-auto px-6 py-16 md:py-24 relative z-20">
+
+        <!-- 參、機車轉乘 (圖文卡片化) -->
+        <section id="section-3" class="mb-24 scroll-mt-24">
+            <div class="flex items-center mb-10 border-b border-gray-200 pb-4">
+                <span class="text-4xl font-serif font-black text-gray-200 mr-4">03</span>
+                <h2 class="text-3xl font-bold text-theme-primary tracking-wide">到底改搭公車值不值？</h2>
+            </div>
+            
+            <p class="text-lg text-theme-secondary mb-12 max-w-3xl">
+                基隆地形多坡多雨，機車一直是通勤主力。288 上路這三年來，有人開始把機車鑰匙留在家裡、有人還在觀望。我們用<strong class="text-theme-dark border-b-2 border-theme-accent pb-1">四本帳</strong>算給你看。
+            </p>
+
+            <!-- 圖文卡片網格 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- 經濟帳 -->
+                <div class="group rounded overflow-hidden shadow-editorial bg-white border border-gray-100 hover:shadow-image transition duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1580519542036-ed47f3e42218?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="錢包">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold tracking-widest text-theme-primary rounded-sm">經濟帳</div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm leading-relaxed">機車油錢、機油、保養、停車費加起來，月均 1,500 到 2,000 元。改搭 288 每月僅需 288 元。<strong class="text-theme-dark">一個月差距超過一千元。</strong></p>
+                    </div>
+                </div>
+
+                <!-- 時間帳 -->
+                <div class="group rounded overflow-hidden shadow-editorial bg-white border border-gray-100 hover:shadow-image transition duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="手錶時間">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold tracking-widest text-theme-primary rounded-sm">時間帳</div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm leading-relaxed">機車通勤包含找車位 10 分鐘、穿脫雨具 5 分鐘。改搭公車候車 5-10 分鐘，<strong class="text-theme-dark">車上時間可以滑手機、看書、閉目養神。</strong></p>
+                    </div>
+                </div>
+
+                <!-- 環境帳 -->
+                <div class="group rounded overflow-hidden shadow-editorial bg-white border border-gray-100 hover:shadow-image transition duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="綠葉環境">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold tracking-widest text-theme-primary rounded-sm">環境帳</div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm leading-relaxed">機車每公里碳排約 80 公克，公車每公里碳排分攤後約 40 公克。<strong class="text-theme-dark">少騎一公里，就是為城市少排一半的廢氣。</strong></p>
+                    </div>
+                </div>
+
+                <!-- 健康帳 -->
+                <div class="group rounded overflow-hidden shadow-editorial bg-white border border-gray-100 hover:shadow-image transition duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="步行健康">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold tracking-widest text-theme-primary rounded-sm">健康帳</div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm leading-relaxed">騎車久了難免腰痠手痠。改搭公車，從家門走到站牌的那幾分鐘，<strong class="text-theme-dark">就是忙碌生活中最自然的日常活動量。</strong></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="text-center text-lg font-medium text-theme-primary mt-12 italic">
+                「從加油站到月台，一天多走五分鐘，一個月省下一餐好的。」
+            </p>
+        </section>
+
+        <!-- 肆、完整攻略 (簡約排版) -->
+        <section id="section-4" class="mb-24 scroll-mt-24 max-w-3xl mx-auto">
+            <div class="flex items-center mb-10 border-b border-gray-200 pb-4">
+                <span class="text-4xl font-serif font-black text-gray-200 mr-4">04</span>
+                <h2 class="text-3xl font-bold text-theme-primary tracking-wide">288 完整攻略</h2>
+            </div>
+
+            <div class="bg-white border border-gray-200 shadow-editorial rounded p-8 md:p-10">
+                <dl class="divide-y divide-gray-100">
+                    <div class="py-4 flex flex-col sm:flex-row gap-2 sm:gap-8">
+                        <dt class="w-32 font-bold text-theme-primary tracking-widest shrink-0">在哪買</dt>
+                        <dd class="text-gray-600">悠遊卡、一卡通、愛金卡三大票證業者通路。實體據點包含超商 FamiPort、臺鐵車站、基隆東岸商場。</dd>
+                    </div>
+                    <div class="py-4 flex flex-col sm:flex-row gap-2 sm:gap-8">
+                        <dt class="w-32 font-bold text-theme-primary tracking-widest shrink-0">怎麼啟用</dt>
+                        <dd class="text-gray-600">首次刷卡即啟用，從啟用當天起算 30 天內無限搭乘。</dd>
+                    </div>
+                    <div class="py-4 flex flex-col sm:flex-row gap-2 sm:gap-8">
+                        <dt class="w-32 font-bold text-theme-primary tracking-widest shrink-0">能搭什麼</dt>
+                        <dd class="text-gray-600">臺鐵基隆、三坑、八堵、七堵、百福、暖暖 6 站。基隆市公車處所營 57 條公車路線。</dd>
+                    </div>
+                    <div class="py-4 flex flex-col sm:flex-row gap-2 sm:gap-8">
+                        <dt class="w-32 font-bold text-gray-400 tracking-widest shrink-0">不能搭什麼</dt>
+                        <dd class="text-gray-500">國光客運、基隆客運跨市路線。臺鐵暖暖以南車站。</dd>
+                    </div>
+                    <div class="py-4 flex flex-col sm:flex-row gap-2 sm:gap-8">
+                        <dt class="w-32 font-bold text-gray-400 tracking-widest shrink-0">退票規則</dt>
+                        <dd class="text-gray-500 text-sm">依使用天數與扣款規則辦理，詳情見交通處網站。</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- 伍、基隆人怎麼說 (成熟引言區) -->
+        <section class="mb-24 max-w-3xl mx-auto">
+            <div class="flex items-center mb-10 border-b border-gray-200 pb-4">
+                <span class="text-4xl font-serif font-black text-gray-200 mr-4">05</span>
+                <h2 class="text-3xl font-bold text-theme-primary tracking-wide">基隆人怎麼說</h2>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Quote 1 -->
+                <div class="flex gap-6 items-start">
+                    <div class="text-gray-300 text-4xl font-serif pt-1">"</div>
+                    <div>
+                        <p class="text-gray-700 text-lg leading-relaxed mb-3">
+                            有時候公車一到站，司機為了趕離場會說大家下車不用刷了。我以為是方便大家，後來才知道這一刷沒刷，市府就少看見一筆資料。
+                        </p>
+                        <p class="text-sm font-bold text-gray-400">— 信義區・陳先生</p>
+                    </div>
+                </div>
+                <!-- Quote 2 -->
+                <div class="flex gap-6 items-start">
+                    <div class="text-gray-300 text-4xl font-serif pt-1">"</div>
+                    <div>
+                        <p class="text-gray-700 text-lg leading-relaxed mb-3">
+                            我住七堵，以前每天騎車到市區上班。買了 288 之後改搭台鐵，通勤時間差不多，可是下雨天終於不用再穿雨衣了。
+                        </p>
+                        <p class="text-sm font-bold text-gray-400">— 七堵區・林小姐</p>
+                    </div>
+                </div>
+                <!-- Quote 3 -->
+                <div class="flex gap-6 items-start">
+                    <div class="text-theme-accent/30 text-4xl font-serif pt-1">"</div>
+                    <div>
+                        <p class="text-theme-dark text-xl font-medium leading-relaxed mb-3">
+                            買卡三年，省下的錢加起來可以去一趟日本。
+                        </p>
+                        <p class="text-sm font-bold text-gray-400">— 學生族・王同學</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action (Survey) -->
+        <section class="mb-24 max-w-3xl mx-auto">
+            <div class="bg-theme-primary text-white rounded-sm p-10 text-center shadow-editorial relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 opacity-10">
+                    <img src="基隆海嗨_LOGO_嗨.png" alt="背景裝飾" class="w-64 h-64 object-contain">
+                </div>
+                
+                <h3 class="relative z-10 text-2xl font-bold mb-3 tracking-wider">你的通勤故事，是下一個政策的起點</h3>
+                <p class="relative z-10 text-gray-300 mb-8 font-light text-sm">
+                    我們正在收集基隆人的 288 使用體驗，花 3 分鐘填寫問卷，讓我們聽見你的聲音。
+                </p>
+                <a href="#" class="relative z-10 inline-block bg-theme-accent hover:bg-blue-500 text-white font-medium text-sm py-3 px-8 transition-colors rounded-sm tracking-widest">
+                    填寫問卷・抽 200 元電子票券
+                </a>
+            </div>
+        </section>
+
+        <!-- 延伸閱讀 -->
+        <section class="border-t border-gray-200 pt-12 max-w-3xl mx-auto">
+            <h3 class="text-lg font-bold text-gray-500 mb-6 tracking-widest">延伸閱讀</h3>
+            <div class="flex flex-col gap-3">
+                <a href="#" class="text-gray-700 hover:text-theme-accent font-medium text-lg border-b border-gray-100 pb-3 transition">基隆人的 288 定期票使用全攻略 &rarr;</a>
+                <a href="#" class="text-gray-700 hover:text-theme-accent font-medium text-lg border-b border-gray-100 pb-3 transition">訪問基隆通勤族：288 用得最兇的五種人 &rarr;</a>
+                <a href="#" class="text-gray-700 hover:text-theme-accent font-medium text-lg border-b border-gray-100 pb-3 transition">288 三年，基隆公共運輸發生了什麼變化 &rarr;</a>
+                <a href="#" class="text-gray-700 hover:text-theme-accent font-medium text-lg pb-3 transition">上下車都刷卡，你做的這件事在後台變成什麼 &rarr;</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-theme-dark text-gray-400 py-16 border-t-[6px] border-theme-accent">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+            <div class="flex flex-col items-center md:items-start">
+                <!-- 頁尾正方版 Logo -->
+                <img src="基隆海嗨_LOGO_正方版.png" alt="基隆海嗨 Logo" class="h-20 mb-4 object-contain brightness-0 invert opacity-80">
+                <p class="text-xs tracking-widest">最在地的數位媒體・專題報導小組</p>
+            </div>
+            <div class="flex gap-4 mt-4 md:mt-8">
+                <a href="#" class="w-10 h-10 border border-gray-600 rounded-full flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="w-10 h-10 border border-gray-600 rounded-full flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="w-10 h-10 border border-gray-600 rounded-full flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent hover:text-white transition"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="max-w-4xl mx-auto px-6 mt-12 pt-6 border-t border-gray-700 text-[10px] text-center tracking-widest">
+            &copy; 2026 KEELUNG HIHI MEDIA. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <!-- JS: 滾動進度條與導航列效果 -->
+    <script>
+        window.onscroll = function() {
+            // 閱讀進度條
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+
+            // 導航列陰影與透明度變化
+            var navbar = document.getElementById("navbar");
+            if (winScroll > 50) {
+                navbar.classList.add("shadow-md");
+                navbar.classList.replace("bg-white/95", "bg-white");
+            } else {
+                navbar.classList.remove("shadow-md");
+                navbar.classList.replace("bg-white", "bg-white/95");
+            }
+        };
+    </script>
+</body>
+</html>
